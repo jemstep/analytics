@@ -80,13 +80,14 @@ docker run -d \
 ![](screenshots/18.png)
 
 ###### 8. Running SuperSet(open console 4)
-
+```
 git clone https://github.com/apache/incubator-superset/
 cd incubator-superset/contrib/docker
 # prefix with SUPERSET_LOAD_EXAMPLES=yes to load examples:
 docker-compose run --rm superset ./docker-init.sh
 # you can run this command everytime you need to start superset now:
 docker-compose up
+```
 
 Steps already mentioned here: https://superset.incubator.apache.org/installation.html#start-with-docker
 
