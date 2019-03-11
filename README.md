@@ -2,6 +2,9 @@
 
 An example project that produces some example Kafka messages
 
+![alt text](https://github.com/jemstep/analytics/tree/master/screenshots/1.png)
+
+
 ## Running the example:
 
 ###### 1. Create Network
