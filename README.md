@@ -2,7 +2,7 @@
 
 An example project that produces some example Kafka messages
 
-![alt text](https://github.com/jemstep/analytics/tree/master/screenshots/1.png)
+![](screenshots/1.png)
 
 
 ## Running the example:
