@@ -95,7 +95,7 @@ Once all of them are up you see below screenshots on console 4:
 ![](screenshots/19.png)
 
 ######: 9. Once superset starts running on http://localhost:8088, kindly follow
-1. Step_by_step_Guide_To_configure_Superset.pdf document to connect to local druid broker for issuing quaries and creating charts with the data stored in Druid.
+1. + https://github.com/jemstep/analytics/Step_by_step_Guide_To_configure_Superset.pdf document to connect to local druid broker for issuing quaries and creating charts with the data stored in Druid.
 
 ######: 10. More links useful during learning:
 1. http://druid.io/docs/latest/design/index.html
