@@ -1,4 +1,4 @@
-# Analytics project that consumes events from kafka and stores in OLAP family Druid DB for analytics. Spuerset is visualization tool.
+# Analytics project that consumes events from kafka and stores in OLAP family Druid DB for analytics. Superset is visualization tool.
 
 An example project that produces some example Kafka messages
 
