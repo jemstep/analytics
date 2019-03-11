@@ -1,0 +1,257 @@
+{
+  "type" : "record",
+  "name" : "StandingInstruction",
+  "namespace" : "com.jemstep.model.integration.pershing",
+  "doc" : "",
+  "fields" : [ {
+    "name" : "uuid",
+    "type" : "string"
+  }, {
+    "name" : "bankName",
+    "type" : "string"
+  }, {
+    "name" : "accountNumber",
+    "type" : {
+      "type" : "record",
+      "name" : "AccountNumberPII",
+      "namespace" : "com.jemstep.model.pii",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "plainValue",
+        "type" : "string"
+      } ]
+    }
+  }, {
+    "name" : "accountName",
+    "type" : "string"
+  }, {
+    "name" : "ownership",
+    "type" : "string"
+  }, {
+    "name" : "toAcctType",
+    "type" : "string"
+  }, {
+    "name" : "fromBankName",
+    "type" : "string"
+  }, {
+    "name" : "fromAccountRoutingNumber",
+    "type" : "string"
+  }, {
+    "name" : "fromAccountNumber",
+    "type" : "com.jemstep.model.pii.AccountNumberPII"
+  }, {
+    "name" : "fromAcctType",
+    "type" : "string"
+  }, {
+    "name" : "fromAccountHolderName",
+    "type" : {
+      "type" : "record",
+      "name" : "FullNamePII",
+      "namespace" : "com.jemstep.model.pii",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "plainValue",
+        "type" : "string"
+      } ]
+    }
+  }, {
+    "name" : "jointAccountHolderName",
+    "type" : [ "null", "com.jemstep.model.pii.FullNamePII" ]
+  }, {
+    "name" : "jointAccountHolderEmail",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "Email",
+      "namespace" : "com.jemstep.model.pii",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "plainValue",
+        "type" : "string"
+      } ]
+    } ]
+  }, {
+    "name" : "status",
+    "type" : "string"
+  }, {
+    "name" : "description",
+    "type" : "string"
+  }, {
+    "name" : "createdDate",
+    "type" : "string"
+  }, {
+    "name" : "updatedDate",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "apiError",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "pershingSI",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "PershingStandingInstruction",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "recordIdSequenceNo",
+        "type" : "string"
+      }, {
+        "name" : "pershingStatus",
+        "type" : "string"
+      }, {
+        "name" : "fromAcctType",
+        "type" : "string"
+      }, {
+        "name" : "sequenceNumber",
+        "type" : "string"
+      }, {
+        "name" : "standingInstructionRequestID",
+        "type" : "string"
+      }, {
+        "name" : "createdDate",
+        "type" : "string"
+      }, {
+        "name" : "updatedDate",
+        "type" : "string"
+      } ]
+    } ]
+  }, {
+    "name" : "onceOffACHs",
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "OnceOffACH",
+        "doc" : "",
+        "fields" : [ {
+          "name" : "uuid",
+          "type" : "string"
+        }, {
+          "name" : "status",
+          "type" : "string"
+        }, {
+          "name" : "amount",
+          "type" : "double"
+        }, {
+          "name" : "contributionYear",
+          "type" : "string"
+        }, {
+          "name" : "isFutureDated",
+          "type" : "boolean"
+        }, {
+          "name" : "apiError",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "createdDate",
+          "type" : "string"
+        }, {
+          "name" : "updatedDate",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "startDate",
+          "type" : "string"
+        }, {
+          "name" : "pershingOnceOffACH",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "PershingOnceOffACH",
+            "doc" : "",
+            "fields" : [ {
+              "name" : "enterpriseId",
+              "type" : "string"
+            }, {
+              "name" : "requestId",
+              "type" : "string"
+            }, {
+              "name" : "processOnNextDay",
+              "type" : "boolean"
+            } ]
+          } ]
+        }, {
+          "name" : "isEnrollment",
+          "type" : "boolean"
+        }, {
+          "name" : "nextDate",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "achType",
+          "type" : "string"
+        } ]
+      }
+    }
+  }, {
+    "name" : "pis",
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "PeriodicStandingInstruction",
+        "doc" : "",
+        "fields" : [ {
+          "name" : "uuid",
+          "type" : "string"
+        }, {
+          "name" : "status",
+          "type" : "string"
+        }, {
+          "name" : "frequency",
+          "type" : "string"
+        }, {
+          "name" : "amount",
+          "type" : "double"
+        }, {
+          "name" : "startDate",
+          "type" : "string"
+        }, {
+          "name" : "endDate",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "pershingPSI",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "PershingPeriodicStandingInstruction",
+            "doc" : "",
+            "fields" : [ {
+              "name" : "pershingStatus",
+              "type" : "string"
+            }, {
+              "name" : "frequency",
+              "type" : "string"
+            }, {
+              "name" : "sequenceNumber",
+              "type" : "string"
+            }, {
+              "name" : "standingInstructionRequestID",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "standingInstructionID",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "createdDate",
+              "type" : "string"
+            }, {
+              "name" : "updatedDate",
+              "type" : "string"
+            } ]
+          } ]
+        }, {
+          "name" : "createdDate",
+          "type" : "string"
+        }, {
+          "name" : "updatedDate",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "apiError",
+          "type" : [ "null", "string" ]
+        }, {
+          "name" : "isEnrollment",
+          "type" : "boolean"
+        }, {
+          "name" : "nextDate",
+          "type" : [ "null", "string" ]
+        } ]
+      }
+    }
+  }, {
+    "name" : "timeStamp",
+    "type" : "string"
+  } ]
+}

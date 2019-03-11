@@ -1,0 +1,38 @@
+{
+  "type" : "record",
+  "name" : "QuestionnaireEvent",
+  "namespace" : "com.jemstep.model.questionnaire",
+  "doc" : "",
+  "fields" : [ {
+    "name" : "questions",
+    "type" : {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "QuestionEvent",
+        "doc" : "",
+        "fields" : [ {
+          "name" : "questionId",
+          "type" : "string"
+        }, {
+          "name" : "questionText",
+          "type" : "string"
+        }, {
+          "name" : "answer",
+          "type" : {
+            "type" : "record",
+            "name" : "AnswerEvent",
+            "doc" : "",
+            "fields" : [ {
+              "name" : "answerId",
+              "type" : "string"
+            }, {
+              "name" : "answerText",
+              "type" : "string"
+            } ]
+          }
+        } ]
+      }
+    }
+  } ]
+}

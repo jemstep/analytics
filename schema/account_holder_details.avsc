@@ -1,0 +1,969 @@
+{
+  "type" : "record",
+  "name" : "AccountHolderDetails",
+  "namespace" : "com.jemstep.model.enrollment",
+  "doc" : "",
+  "fields" : [ {
+    "name" : "primary",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "Person",
+      "namespace" : "com.jemstep.model.codecs",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "firstName",
+        "type" : {
+          "type" : "record",
+          "name" : "FirstNamePII",
+          "namespace" : "com.jemstep.model.pii",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "plainValue",
+            "type" : "string"
+          } ]
+        }
+      }, {
+        "name" : "lastName",
+        "type" : {
+          "type" : "record",
+          "name" : "LastNamePII",
+          "namespace" : "com.jemstep.model.pii",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "plainValue",
+            "type" : "string"
+          } ]
+        }
+      }, {
+        "name" : "socialSecurity",
+        "type" : {
+          "type" : "record",
+          "name" : "VerifiableSocialSecurity",
+          "namespace" : "com.jemstep.model.enrollment",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "ssn",
+            "type" : {
+              "type" : "record",
+              "name" : "SocialSecurityNumber",
+              "namespace" : "com.jemstep.model.pii",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "plainValue",
+                "type" : "string"
+              } ]
+            }
+          }, {
+            "name" : "verified",
+            "type" : "boolean"
+          } ]
+        }
+      }, {
+        "name" : "email",
+        "type" : {
+          "type" : "record",
+          "name" : "Email",
+          "namespace" : "com.jemstep.model.pii",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "plainValue",
+            "type" : "string"
+          } ]
+        }
+      }, {
+        "name" : "optionalFields",
+        "type" : {
+          "type" : "record",
+          "name" : "PersonOptionalFields",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "prefix",
+            "type" : [ "null", "string" ]
+          }, {
+            "name" : "middleName",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "MiddleNamePII",
+              "namespace" : "com.jemstep.model.pii",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "plainValue",
+                "type" : "string"
+              } ]
+            } ]
+          }, {
+            "name" : "suffix",
+            "type" : [ "null", "string" ]
+          }, {
+            "name" : "dateOfBirth",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "DateOfBirthPII",
+              "namespace" : "com.jemstep.model.pii",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "plainValue",
+                "type" : "string"
+              } ]
+            } ]
+          }, {
+            "name" : "maritalStatus",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "MaritalStatusPII",
+              "namespace" : "com.jemstep.model.pii",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "plainValue",
+                "type" : "string"
+              } ]
+            } ]
+          }, {
+            "name" : "numberOfDependents",
+            "type" : [ "null", "int" ]
+          }, {
+            "name" : "gender",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "GenderPII",
+              "namespace" : "com.jemstep.model.pii",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "plainValue",
+                "type" : "string"
+              } ]
+            } ]
+          }, {
+            "name" : "relationshipToPrimaryOwner",
+            "type" : [ "null", "string" ]
+          }, {
+            "name" : "identityInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "IdentificationDocumentInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "documentType",
+                "type" : "string"
+              }, {
+                "name" : "documentTypeOther",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "identificationNumber",
+                "type" : {
+                  "type" : "record",
+                  "name" : "IdentificationNumber",
+                  "namespace" : "com.jemstep.model.pii",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "plainValue",
+                    "type" : "string"
+                  } ]
+                }
+              }, {
+                "name" : "dateOfIssuance",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "dateOfExpiration",
+                "type" : "string"
+              }, {
+                "name" : "stateOfIssuance",
+                "type" : "string"
+              }, {
+                "name" : "countryOfIssuance",
+                "type" : "string"
+              } ]
+            } ]
+          }, {
+            "name" : "contactInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "ContactInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "daytimePhoneNumber",
+                "type" : {
+                  "type" : "record",
+                  "name" : "PhoneNumber",
+                  "namespace" : "com.jemstep.model.pii",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "plainValue",
+                    "type" : "string"
+                  } ]
+                }
+              }, {
+                "name" : "isInternationalNumber",
+                "type" : "boolean"
+              }, {
+                "name" : "homeAddress",
+                "type" : {
+                  "type" : "record",
+                  "name" : "USAddress",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "addressLine1",
+                    "type" : {
+                      "type" : "record",
+                      "name" : "AddressLine1",
+                      "namespace" : "com.jemstep.model.pii",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "plainValue",
+                        "type" : "string"
+                      } ]
+                    }
+                  }, {
+                    "name" : "addressLine2",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "AddressLine2",
+                      "namespace" : "com.jemstep.model.pii",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "plainValue",
+                        "type" : "string"
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "city",
+                    "type" : {
+                      "type" : "record",
+                      "name" : "City",
+                      "namespace" : "com.jemstep.model.pii",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "plainValue",
+                        "type" : "string"
+                      } ]
+                    }
+                  }, {
+                    "name" : "state",
+                    "type" : {
+                      "type" : "record",
+                      "name" : "State",
+                      "namespace" : "com.jemstep.model.pii",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "plainValue",
+                        "type" : "string"
+                      } ]
+                    }
+                  }, {
+                    "name" : "zipCode",
+                    "type" : {
+                      "type" : "record",
+                      "name" : "ZipCode",
+                      "namespace" : "com.jemstep.model.pii",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "plainValue",
+                        "type" : "string"
+                      } ]
+                    }
+                  }, {
+                    "name" : "country",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "CountryUSAddress",
+                      "namespace" : "com.jemstep.model.pii",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "plainValue",
+                        "type" : "string"
+                      } ]
+                    } ]
+                  } ]
+                }
+              }, {
+                "name" : "differentMailingAddress",
+                "type" : "boolean"
+              }, {
+                "name" : "mailingAddress",
+                "type" : [ "null", "USAddress" ]
+              }, {
+                "name" : "addressSameAsPrimary",
+                "type" : "boolean"
+              } ]
+            } ]
+          }, {
+            "name" : "employmentInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "EmploymentInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "employmentStatus",
+                "type" : "string"
+              }, {
+                "name" : "businessOrEmployerName",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "occupationOrTypeOfBusiness",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "businessAddress",
+                "type" : [ "null", "USAddress" ]
+              }, {
+                "name" : "industry",
+                "type" : [ "null", "string" ]
+              } ]
+            } ]
+          }, {
+            "name" : "sourceOFundsInfo",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "SourceOFundsInfo",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "sourceOfFundsDeposited",
+                "type" : "string"
+              }, {
+                "name" : "sourceOfFundsDepositedOther",
+                "type" : [ "null", "string" ]
+              } ]
+            } ]
+          }, {
+            "name" : "financialAndTaxInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "FinancialAndTaxInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "annualIncome",
+                "type" : [ "null", "long" ]
+              }, {
+                "name" : "taxBracket",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "netWorth",
+                "type" : [ "null", "long" ]
+              }, {
+                "name" : "liquidNetWorth",
+                "type" : [ "null", "long" ]
+              }, {
+                "name" : "notifiedByIRS",
+                "type" : [ "null", "boolean" ]
+              }, {
+                "name" : "payeeCode",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "fatcaCode",
+                "type" : [ "null", "string" ]
+              } ]
+            } ]
+          }, {
+            "name" : "objectiveAndInvestmentDetails",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "ObjectiveAndInvestmentDetails",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "primaryInvestmentObjectives",
+                "type" : "string"
+              }, {
+                "name" : "retirementInformation",
+                "type" : {
+                  "type" : "record",
+                  "name" : "RetirementInformation",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "retirementAge",
+                    "type" : "int"
+                  }, {
+                    "name" : "retirementPlanCoverage",
+                    "type" : "string"
+                  }, {
+                    "name" : "spouseRetirementPlanCoverage",
+                    "type" : [ "null", "string" ]
+                  } ]
+                }
+              } ]
+            } ]
+          }, {
+            "name" : "investmentKnowledgeInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "InvestmentKnowledgeInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "generalInvestmentExperience",
+                "type" : "string"
+              }, {
+                "name" : "investmentExperience",
+                "type" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "record",
+                    "name" : "InvestmentExperience",
+                    "doc" : "",
+                    "fields" : [ {
+                      "name" : "investmentType",
+                      "type" : "string"
+                    }, {
+                      "name" : "level",
+                      "type" : [ "null", "string" ]
+                    }, {
+                      "name" : "sinceYear",
+                      "type" : [ "null", "int" ]
+                    } ]
+                  }
+                }
+              } ]
+            } ]
+          }, {
+            "name" : "taxDispositionInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "TaxDispositionInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "mutualFunds",
+                "type" : "string"
+              }, {
+                "name" : "stockDividendsRetirementPlan",
+                "type" : "string"
+              }, {
+                "name" : "allOtherSecurities",
+                "type" : "string"
+              } ]
+            } ]
+          }, {
+            "name" : "personalAffiliations",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "PersonalAffiliations",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "brokerFINRAFirm",
+                "type" : "boolean"
+              }, {
+                "name" : "publiclyTradedCompany",
+                "type" : "boolean"
+              }, {
+                "name" : "personalAffiliationsDetails",
+                "type" : [ "null", {
+                  "type" : "record",
+                  "name" : "PersonalAffiliationsDetails",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "nameOfPerson",
+                    "type" : "string"
+                  }, {
+                    "name" : "companyName",
+                    "type" : "string"
+                  }, {
+                    "name" : "stockSymbol",
+                    "type" : "string"
+                  }, {
+                    "name" : "companyAddress",
+                    "type" : "USAddress"
+                  } ]
+                } ]
+              }, {
+                "name" : "brokerPersonalAffiliationsDetails",
+                "type" : [ "null", {
+                  "type" : "record",
+                  "name" : "BrokerPersonalAffiliationsDetails",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "employeeOfBrokerDealer",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "employeeRelation",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "EmployeeRelation",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "relatedToEmployeeName",
+                        "type" : "string"
+                      }, {
+                        "name" : "relatedToEmployeeSurname",
+                        "type" : "string"
+                      }, {
+                        "name" : "relatedToEmployeeRelationship",
+                        "type" : "string"
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "employedByAnotherBrokerName",
+                    "type" : [ "null", "string" ]
+                  }, {
+                    "name" : "employeeRelationByAnotherBroker",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "EmployeeRelationByAnotherBroker",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "brokerName",
+                        "type" : [ "null", "string" ]
+                      }, {
+                        "name" : "employeeName",
+                        "type" : "string"
+                      }, {
+                        "name" : "employeeSurname",
+                        "type" : "string"
+                      }, {
+                        "name" : "relationship",
+                        "type" : [ "null", "string" ]
+                      }, {
+                        "name" : "relatedToEmployeeTaxId",
+                        "type" : [ "null", "string" ]
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "otherBrokerageAccounts",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "OtherBrokerageAccounts",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "firms",
+                        "type" : "string"
+                      }, {
+                        "name" : "experience",
+                        "type" : "int"
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "stockExchangeIndustryRegulatorAffiliation",
+                    "type" : [ "null", "string" ]
+                  }, {
+                    "name" : "seniorOfficerDirectorShareholderCompanyNames",
+                    "type" : [ "null", "string" ]
+                  }, {
+                    "name" : "seniorMilitaryGovernmentPoliticalOfficial",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "SeniorMilitaryGovernmentPoliticalOfficial",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "nameOfOfficial",
+                        "type" : "string"
+                      }, {
+                        "name" : "lastNameOfOfficial",
+                        "type" : "string"
+                      }, {
+                        "name" : "officeHeld",
+                        "type" : "string"
+                      }, {
+                        "name" : "country",
+                        "type" : "string"
+                      } ]
+                    } ]
+                  }, {
+                    "name" : "employeeIdentificationId",
+                    "type" : [ "null", "string" ]
+                  }, {
+                    "name" : "seniorOfficerDirectorShareholderCompanies",
+                    "type" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "record",
+                        "name" : "Company",
+                        "doc" : "",
+                        "fields" : [ {
+                          "name" : "companyName",
+                          "type" : "string"
+                        }, {
+                          "name" : "isPublicTraded",
+                          "type" : "boolean"
+                        } ]
+                      }
+                    }
+                  }, {
+                    "name" : "seniorOfficerFinancialInstitutionCompanies",
+                    "type" : {
+                      "type" : "array",
+                      "items" : "Company"
+                    }
+                  } ]
+                } ]
+              }, {
+                "name" : "pasPersonalAffiliation",
+                "type" : [ "null", {
+                  "type" : "record",
+                  "name" : "PasPersonalAffiliation",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "isAffiliatedWithBrokerDealer",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "isEmployedAtBrokerAffiliatedWith",
+                    "type" : [ "null", "boolean" ]
+                  }, {
+                    "name" : "hasRelativeAffiliatedBroker",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "hasFamilyMemberOnPubliclyTradedCompany",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "relatedToMilitaryGovernmentPoliticalOfficial",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "pasPersonalAffiliationDetails",
+                    "type" : [ "null", {
+                      "type" : "record",
+                      "name" : "PasPersonalAffiliationDetails",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "employedAtAffiliatedBroker",
+                        "type" : [ "null", {
+                          "type" : "record",
+                          "name" : "EmployedAtAffiliatedBroker",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "affiliatedEntityName",
+                            "type" : "string"
+                          }, {
+                            "name" : "affiliatedEntityAdress",
+                            "type" : "USAddress"
+                          }, {
+                            "name" : "natureOfAffiliation",
+                            "type" : "string"
+                          } ]
+                        } ]
+                      }, {
+                        "name" : "relativeAffiliatedToBroker",
+                        "type" : [ "null", {
+                          "type" : "record",
+                          "name" : "RelativeAffiliatedToBroker",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "relativeFirstName",
+                            "type" : "com.jemstep.model.pii.FirstNamePII"
+                          }, {
+                            "name" : "relativeLastName",
+                            "type" : "com.jemstep.model.pii.LastNamePII"
+                          } ]
+                        } ]
+                      }, {
+                        "name" : "publiclyTradedCompany",
+                        "type" : [ "null", {
+                          "type" : "record",
+                          "name" : "PubliclyTradedCompany",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "companyName",
+                            "type" : "string"
+                          }, {
+                            "name" : "stockSymbol",
+                            "type" : "string"
+                          } ]
+                        } ]
+                      }, {
+                        "name" : "seniorMilitaryGovernmentPoliticalOfficial",
+                        "type" : [ "null", "SeniorMilitaryGovernmentPoliticalOfficial" ]
+                      } ]
+                    } ]
+                  } ]
+                } ]
+              } ]
+            } ]
+          }, {
+            "name" : "citizenshipInformation",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "CitizenshipInformation",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "countryOfCitizenship",
+                "type" : "string"
+              }, {
+                "name" : "countryOfPermanentResidence",
+                "type" : [ "null", "string" ]
+              }, {
+                "name" : "citizenshipStatus",
+                "type" : [ "null", "string" ]
+              } ]
+            } ]
+          }, {
+            "name" : "securityQuestions",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "ModelQuestionnaire",
+              "namespace" : "com.jemstep.model.questionnaire",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "questions",
+                "type" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "record",
+                    "name" : "ModelQuestion",
+                    "doc" : "",
+                    "fields" : [ {
+                      "name" : "questionId",
+                      "type" : "string"
+                    }, {
+                      "name" : "answer",
+                      "type" : [ "null", "string" ]
+                    } ]
+                  }
+                }
+              }, {
+                "name" : "pendingEdition",
+                "type" : {
+                  "type" : "array",
+                  "items" : "ModelQuestion"
+                }
+              } ]
+            } ]
+          }, {
+            "name" : "trustedContactDetails",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "TrustedContactDetails",
+              "namespace" : "com.jemstep.model.enrollment",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "trustedContacts",
+                "type" : {
+                  "type" : "array",
+                  "items" : {
+                    "type" : "record",
+                    "name" : "TrustedContact",
+                    "doc" : "",
+                    "fields" : [ {
+                      "name" : "acctUUID",
+                      "type" : {
+                        "type" : "array",
+                        "items" : "string"
+                      }
+                    }, {
+                      "name" : "firstName",
+                      "type" : "com.jemstep.model.pii.FirstNamePII"
+                    }, {
+                      "name" : "lastName",
+                      "type" : "com.jemstep.model.pii.LastNamePII"
+                    }, {
+                      "name" : "email",
+                      "type" : "com.jemstep.model.pii.Email"
+                    }, {
+                      "name" : "countryOfCitizenship",
+                      "type" : "string"
+                    }, {
+                      "name" : "daytimePhoneNumber",
+                      "type" : "string"
+                    }, {
+                      "name" : "isInternationalNumber",
+                      "type" : "boolean"
+                    }, {
+                      "name" : "homeAddress",
+                      "type" : "USAddress"
+                    }, {
+                      "name" : "differentMailingAddress",
+                      "type" : "boolean"
+                    }, {
+                      "name" : "mailingAddress",
+                      "type" : [ "null", "USAddress" ]
+                    } ]
+                  }
+                }
+              } ]
+            } ]
+          } ]
+        }
+      } ]
+    } ]
+  }, {
+    "name" : "spouse",
+    "type" : [ "null", "com.jemstep.model.codecs.Person" ]
+  }, {
+    "name" : "primaryBeneficiaryDetails",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "BeneficiaryDetails",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "specifyBeneficiariesPerAccount",
+        "type" : "boolean"
+      }, {
+        "name" : "accountBeneficiaryDetails",
+        "type" : {
+          "type" : "array",
+          "items" : {
+            "type" : "record",
+            "name" : "AccountBeneficiaryDetails",
+            "doc" : "",
+            "fields" : [ {
+              "name" : "acctTypeOwnership",
+              "type" : [ "null", {
+                "type" : "record",
+                "name" : "AcctTypeOwnership",
+                "doc" : "",
+                "fields" : [ {
+                  "name" : "acctType",
+                  "type" : "string"
+                }, {
+                  "name" : "ownership",
+                  "type" : "string"
+                } ]
+              } ]
+            }, {
+              "name" : "fromAcctUUID",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "accountName",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "brokerName",
+              "type" : [ "null", "string" ]
+            }, {
+              "name" : "beneficiaries",
+              "type" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "record",
+                  "name" : "Beneficiary",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "beneficiaryType",
+                    "type" : "string"
+                  }, {
+                    "name" : "beneficiaryRole",
+                    "type" : [ "null", "string" ]
+                  }, {
+                    "name" : "firstName",
+                    "type" : "com.jemstep.model.pii.FirstNamePII"
+                  }, {
+                    "name" : "lastName",
+                    "type" : "com.jemstep.model.pii.LastNamePII"
+                  }, {
+                    "name" : "gender",
+                    "type" : [ "null", "com.jemstep.model.pii.GenderPII" ]
+                  }, {
+                    "name" : "socialSecurity",
+                    "type" : [ "null", "com.jemstep.model.pii.SocialSecurityNumber" ]
+                  }, {
+                    "name" : "dateOfBirth",
+                    "type" : "com.jemstep.model.pii.DateOfBirthPII"
+                  }, {
+                    "name" : "relationship",
+                    "type" : "string"
+                  }, {
+                    "name" : "sharePercentage",
+                    "type" : "double"
+                  }, {
+                    "name" : "phoneNumber",
+                    "type" : "com.jemstep.model.pii.PhoneNumber"
+                  }, {
+                    "name" : "isInternationalNumber",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "homeAddress",
+                    "type" : "USAddress"
+                  }, {
+                    "name" : "perStirpes",
+                    "type" : "boolean"
+                  } ]
+                }
+              }
+            }, {
+              "name" : "trustBeneficiaries",
+              "type" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "record",
+                  "name" : "TrustBeneficiary",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "beneficiaryType",
+                    "type" : "string"
+                  }, {
+                    "name" : "beneficiaryRole",
+                    "type" : "string"
+                  }, {
+                    "name" : "trustName",
+                    "type" : "string"
+                  }, {
+                    "name" : "socialSecurity",
+                    "type" : [ "null", "com.jemstep.model.pii.SocialSecurityNumber" ]
+                  }, {
+                    "name" : "dateOfTrust",
+                    "type" : "string"
+                  }, {
+                    "name" : "sharePercentage",
+                    "type" : "double"
+                  }, {
+                    "name" : "phoneNumber",
+                    "type" : "com.jemstep.model.pii.PhoneNumber"
+                  }, {
+                    "name" : "isInternationalNumber",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "homeAddress",
+                    "type" : "USAddress"
+                  } ]
+                }
+              }
+            }, {
+              "name" : "otherBeneficiaries",
+              "type" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "record",
+                  "name" : "OtherNonPersonBeneficiary",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "beneficiaryType",
+                    "type" : "string"
+                  }, {
+                    "name" : "beneficiaryRole",
+                    "type" : "string"
+                  }, {
+                    "name" : "entityName",
+                    "type" : "string"
+                  }, {
+                    "name" : "sharePercentage",
+                    "type" : "double"
+                  }, {
+                    "name" : "phoneNumber",
+                    "type" : "com.jemstep.model.pii.PhoneNumber"
+                  }, {
+                    "name" : "isInternationalNumber",
+                    "type" : "boolean"
+                  }, {
+                    "name" : "homeAddress",
+                    "type" : "USAddress"
+                  } ]
+                }
+              }
+            }, {
+              "name" : "perStirpesResponsibleIndividualName",
+              "type" : [ "null", "string" ]
+            } ]
+          }
+        }
+      }, {
+        "name" : "maybeSpousalConsentDetails",
+        "type" : [ "null", {
+          "type" : "record",
+          "name" : "SpousalConsentDetails",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "spouseName",
+            "type" : "string"
+          }, {
+            "name" : "spouseEmail",
+            "type" : "com.jemstep.model.pii.Email"
+          } ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "name" : "spouseBeneficiaryDetails",
+    "type" : [ "null", "BeneficiaryDetails" ]
+  } ]
+}

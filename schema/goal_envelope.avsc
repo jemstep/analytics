@@ -1,0 +1,720 @@
+{
+  "type" : "record",
+  "name" : "GoalEnvelope",
+  "namespace" : "com.jemstep.generator",
+  "doc" : "",
+  "fields" : [ {
+    "name" : "goalEvent",
+    "type" : {
+      "type" : "record",
+      "name" : "GoalEvent",
+      "namespace" : "com.jemstep.model.goal",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "id",
+        "type" : "string"
+      }, {
+        "name" : "goalObjective",
+        "type" : "string"
+      }, {
+        "name" : "goalType",
+        "type" : "string"
+      }, {
+        "name" : "properties",
+        "type" : {
+          "type" : "record",
+          "name" : "GoalProperties",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "goalName",
+            "type" : "string"
+          }, {
+            "name" : "created",
+            "type" : "string"
+          }, {
+            "name" : "updated",
+            "type" : "string"
+          } ]
+        }
+      }, {
+        "name" : "questionnaireEvent",
+        "type" : {
+          "type" : "record",
+          "name" : "QuestionnaireEvent",
+          "namespace" : "com.jemstep.model.questionnaire",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "questions",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "QuestionEvent",
+                "doc" : "",
+                "fields" : [ {
+                  "name" : "questionId",
+                  "type" : "string"
+                }, {
+                  "name" : "questionText",
+                  "type" : "string"
+                }, {
+                  "name" : "answer",
+                  "type" : {
+                    "type" : "record",
+                    "name" : "AnswerEvent",
+                    "doc" : "",
+                    "fields" : [ {
+                      "name" : "answerId",
+                      "type" : "string"
+                    }, {
+                      "name" : "answerText",
+                      "type" : "string"
+                    } ]
+                  }
+                } ]
+              }
+            }
+          } ]
+        }
+      }, {
+        "name" : "relatedGoalId",
+        "type" : [ "null", "string" ]
+      } ]
+    }
+  }, {
+    "name" : "portfolioForGoal",
+    "type" : {
+      "type" : "record",
+      "name" : "PortfolioForGoal",
+      "namespace" : "com.jemstep.model.goal",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "goal",
+        "type" : "GoalEvent"
+      }, {
+        "name" : "portfolioByBroker",
+        "type" : {
+          "type" : "record",
+          "name" : "PortfolioByBroker",
+          "namespace" : "com.jemstep.model.portfolio",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "brokers",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "Broker",
+                "doc" : "",
+                "fields" : [ {
+                  "name" : "name",
+                  "type" : "string"
+                }, {
+                  "name" : "aggregation",
+                  "type" : "boolean"
+                }, {
+                  "name" : "accounts",
+                  "type" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "record",
+                      "name" : "Account",
+                      "doc" : "",
+                      "fields" : [ {
+                        "name" : "accountType",
+                        "type" : "string"
+                      }, {
+                        "name" : "accountNumber",
+                        "type" : {
+                          "type" : "record",
+                          "name" : "AccountNumberPII",
+                          "namespace" : "com.jemstep.model.pii",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "plainValue",
+                            "type" : "string"
+                          } ]
+                        }
+                      }, {
+                        "name" : "accountName",
+                        "type" : "string"
+                      }, {
+                        "name" : "currency",
+                        "type" : "string"
+                      }, {
+                        "name" : "accountStatus",
+                        "type" : "string"
+                      }, {
+                        "name" : "tradeDateNetWorth",
+                        "type" : "double"
+                      }, {
+                        "name" : "totalBalance",
+                        "type" : "double"
+                      }, {
+                        "name" : "cashBalance",
+                        "type" : "double"
+                      }, {
+                        "name" : "uuid",
+                        "type" : [ "null", "string" ]
+                      }, {
+                        "name" : "goalIds",
+                        "type" : {
+                          "type" : "array",
+                          "items" : "string"
+                        }
+                      }, {
+                        "name" : "dollarValue",
+                        "type" : "double"
+                      }, {
+                        "name" : "portfolioPercent",
+                        "type" : "double"
+                      }, {
+                        "name" : "positions",
+                        "type" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "record",
+                            "name" : "Position",
+                            "doc" : "",
+                            "fields" : [ {
+                              "name" : "ticker",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "description",
+                              "type" : "string"
+                            }, {
+                              "name" : "units",
+                              "type" : "double"
+                            }, {
+                              "name" : "unitPrice",
+                              "type" : "double"
+                            }, {
+                              "name" : "currency",
+                              "type" : "string"
+                            }, {
+                              "name" : "costBasis",
+                              "type" : [ "null", "double" ]
+                            }, {
+                              "name" : "product",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "productId",
+                              "type" : [ "null", "int" ]
+                            }, {
+                              "name" : "allocations",
+                              "type" : {
+                                "type" : "map",
+                                "values" : "double"
+                              }
+                            }, {
+                              "name" : "uuid",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "update",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "created",
+                              "type" : "string"
+                            }, {
+                              "name" : "dollarValue",
+                              "type" : "double"
+                            }, {
+                              "name" : "assetClass",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "portfolioPercent",
+                              "type" : "double"
+                            }, {
+                              "name" : "cusip",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "assetClassName",
+                              "type" : [ "null", {
+                                "type" : "record",
+                                "name" : "Message",
+                                "namespace" : "com.jemstep.model.util",
+                                "doc" : "",
+                                "fields" : [ {
+                                  "name" : "key",
+                                  "type" : "string"
+                                }, {
+                                  "name" : "args",
+                                  "type" : {
+                                    "type" : "array",
+                                    "items" : "string"
+                                  }
+                                } ]
+                              } ]
+                            }, {
+                              "name" : "purchaseDate",
+                              "type" : [ "null", "string" ]
+                            }, {
+                              "name" : "flags",
+                              "type" : [ "null", {
+                                "type" : "record",
+                                "name" : "PositionFlags",
+                                "doc" : "",
+                                "fields" : [ {
+                                  "name" : "allocationEditable",
+                                  "type" : [ "null", "boolean" ]
+                                }, {
+                                  "name" : "ignoreWarning",
+                                  "type" : [ "null", "boolean" ]
+                                }, {
+                                  "name" : "ignoreAssetClass",
+                                  "type" : [ "null", "boolean" ]
+                                }, {
+                                  "name" : "userManaged",
+                                  "type" : [ "null", "boolean" ]
+                                }, {
+                                  "name" : "missingData",
+                                  "type" : [ "null", "boolean" ]
+                                }, {
+                                  "name" : "ignoreInPortfolio",
+                                  "type" : "boolean"
+                                }, {
+                                  "name" : "lockInPortfolio",
+                                  "type" : "boolean"
+                                } ]
+                              } ]
+                            }, {
+                              "name" : "sourceData",
+                              "type" : [ "null", {
+                                "type" : "record",
+                                "name" : "PositionSourceData",
+                                "doc" : "",
+                                "fields" : [ {
+                                  "name" : "description",
+                                  "type" : "string"
+                                }, {
+                                  "name" : "units",
+                                  "type" : "double"
+                                }, {
+                                  "name" : "unitPrice",
+                                  "type" : "double"
+                                }, {
+                                  "name" : "currency",
+                                  "type" : "string"
+                                }, {
+                                  "name" : "ticker",
+                                  "type" : [ "null", "string" ]
+                                }, {
+                                  "name" : "costBasis",
+                                  "type" : [ "null", "double" ]
+                                }, {
+                                  "name" : "product",
+                                  "type" : [ "null", "string" ]
+                                }, {
+                                  "name" : "productId",
+                                  "type" : [ "null", "int" ]
+                                }, {
+                                  "name" : "assetClass",
+                                  "type" : [ "null", "string" ]
+                                }, {
+                                  "name" : "cusip",
+                                  "type" : [ "null", "string" ]
+                                } ]
+                              } ]
+                            } ]
+                          }
+                        }
+                      }, {
+                        "name" : "update",
+                        "type" : [ "null", "string" ]
+                      }, {
+                        "name" : "created",
+                        "type" : "string"
+                      }, {
+                        "name" : "error",
+                        "type" : [ "null", {
+                          "type" : "record",
+                          "name" : "AccountError",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "errorCode",
+                            "type" : "int"
+                          }, {
+                            "name" : "errorMessage",
+                            "type" : "com.jemstep.model.util.Message"
+                          }, {
+                            "name" : "errorResolution",
+                            "type" : "string"
+                          } ]
+                        } ]
+                      }, {
+                        "name" : "flags",
+                        "type" : [ "null", {
+                          "type" : "record",
+                          "name" : "AccountFlags",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "taxable",
+                            "type" : "boolean"
+                          }, {
+                            "name" : "ignore",
+                            "type" : "boolean"
+                          }, {
+                            "name" : "lock",
+                            "type" : "boolean"
+                          }, {
+                            "name" : "lockByDefault",
+                            "type" : "boolean"
+                          }, {
+                            "name" : "selfDirected",
+                            "type" : [ "null", "boolean" ]
+                          }, {
+                            "name" : "discretionary",
+                            "type" : "boolean"
+                          }, {
+                            "name" : "enrolled",
+                            "type" : "boolean"
+                          } ]
+                        } ]
+                      }, {
+                        "name" : "ownership",
+                        "type" : "string"
+                      }, {
+                        "name" : "accountIntegrations",
+                        "type" : {
+                          "type" : "record",
+                          "name" : "AccountIntegrations",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "integrationsEnabled",
+                            "type" : "boolean"
+                          }, {
+                            "name" : "orion",
+                            "type" : [ "null", {
+                              "type" : "record",
+                              "name" : "Orion",
+                              "namespace" : "com.jemstep.model.integration.orion",
+                              "doc" : "",
+                              "fields" : [ {
+                                "name" : "accountId",
+                                "type" : "int"
+                              }, {
+                                "name" : "registrationId",
+                                "type" : "int"
+                              }, {
+                                "name" : "clientId",
+                                "type" : "int"
+                              }, {
+                                "name" : "advisorOverride",
+                                "type" : {
+                                  "type" : "record",
+                                  "name" : "AdvisorOverrides",
+                                  "doc" : "",
+                                  "fields" : [ {
+                                    "name" : "model",
+                                    "type" : [ "null", {
+                                      "type" : "record",
+                                      "name" : "ModelAggId",
+                                      "doc" : "",
+                                      "fields" : [ {
+                                        "name" : "id",
+                                        "type" : "int"
+                                      } ]
+                                    } ]
+                                  }, {
+                                    "name" : "managementStyle",
+                                    "type" : [ "null", {
+                                      "type" : "record",
+                                      "name" : "ManagementStyleId",
+                                      "doc" : "",
+                                      "fields" : [ {
+                                        "name" : "id",
+                                        "type" : "int"
+                                      } ]
+                                    } ]
+                                  } ]
+                                }
+                              }, {
+                                "name" : "created",
+                                "type" : "string"
+                              } ]
+                            } ]
+                          }, {
+                            "name" : "pershing",
+                            "type" : [ "null", {
+                              "type" : "record",
+                              "name" : "PershingIntegrations",
+                              "namespace" : "com.jemstep.model.integration.pershing",
+                              "doc" : "",
+                              "fields" : [ {
+                                "name" : "mi",
+                                "type" : [ "null", {
+                                  "type" : "record",
+                                  "name" : "PershingMIIntegration",
+                                  "doc" : "",
+                                  "fields" : [ {
+                                    "name" : "state",
+                                    "type" : "string"
+                                  }, {
+                                    "name" : "currentModel",
+                                    "type" : [ "null", "string" ]
+                                  }, {
+                                    "name" : "currentLastUpdated",
+                                    "type" : [ "null", "string" ]
+                                  }, {
+                                    "name" : "pendingModel",
+                                    "type" : [ "null", "string" ]
+                                  }, {
+                                    "name" : "pendingSince",
+                                    "type" : [ "null", "string" ]
+                                  }, {
+                                    "name" : "confirmedModel",
+                                    "type" : [ "null", "string" ]
+                                  }, {
+                                    "name" : "lastConfirmed",
+                                    "type" : [ "null", "string" ]
+                                  } ]
+                                } ]
+                              }, {
+                                "name" : "enrollment",
+                                "type" : [ "null", {
+                                  "type" : "record",
+                                  "name" : "PershingEnrollmentIntegration",
+                                  "doc" : "",
+                                  "fields" : [ {
+                                    "name" : "repCode",
+                                    "type" : "string"
+                                  }, {
+                                    "name" : "accountNumberPrefix",
+                                    "type" : "string"
+                                  } ]
+                                } ]
+                              }, {
+                                "name" : "edelivery",
+                                "type" : [ "null", {
+                                  "type" : "record",
+                                  "name" : "PershingEdeliveryIntegration",
+                                  "doc" : "",
+                                  "fields" : [ {
+                                    "name" : "returnCode",
+                                    "type" : "int"
+                                  } ]
+                                } ]
+                              } ]
+                            } ]
+                          } ]
+                        }
+                      }, {
+                        "name" : "contributionPlan",
+                        "type" : {
+                          "type" : "record",
+                          "name" : "DefinedContributionPlan",
+                          "doc" : "",
+                          "fields" : [ {
+                            "name" : "employerName",
+                            "type" : [ "null", "string" ]
+                          }, {
+                            "name" : "employerEin",
+                            "type" : [ "null", "string" ]
+                          }, {
+                            "name" : "employerId",
+                            "type" : [ "null", "string" ]
+                          }, {
+                            "name" : "planId",
+                            "type" : [ "null", "int" ]
+                          }, {
+                            "name" : "planName",
+                            "type" : [ "null", "string" ]
+                          }, {
+                            "name" : "eligibleForRollover",
+                            "type" : "boolean"
+                          } ]
+                        }
+                      }, {
+                        "name" : "isRollover",
+                        "type" : [ "null", "boolean" ]
+                      } ]
+                    }
+                  }
+                }, {
+                  "name" : "url",
+                  "type" : [ "null", "string" ]
+                }, {
+                  "name" : "hasImage",
+                  "type" : "boolean"
+                }, {
+                  "name" : "uuid",
+                  "type" : "string"
+                }, {
+                  "name" : "dollarValue",
+                  "type" : "double"
+                }, {
+                  "name" : "portfolioPercent",
+                  "type" : "double"
+                }, {
+                  "name" : "update",
+                  "type" : [ "null", "string" ]
+                }, {
+                  "name" : "created",
+                  "type" : "string"
+                }, {
+                  "name" : "fiId",
+                  "type" : [ "null", "int" ]
+                }, {
+                  "name" : "error",
+                  "type" : [ "null", "AccountError" ]
+                }, {
+                  "name" : "showErrorAlert",
+                  "type" : [ "null", "boolean" ]
+                }, {
+                  "name" : "flags",
+                  "type" : [ "null", {
+                    "type" : "record",
+                    "name" : "BrokerFlags",
+                    "doc" : "",
+                    "fields" : [ {
+                      "name" : "existingBook",
+                      "type" : "boolean"
+                    } ]
+                  } ]
+                } ]
+              }
+            }
+          }, {
+            "name" : "dollarValue",
+            "type" : "double"
+          }, {
+            "name" : "portfolioPercent",
+            "type" : "double"
+          } ]
+        }
+      } ]
+    }
+  }, {
+    "name" : "targetForGoal",
+    "type" : {
+      "type" : "record",
+      "name" : "TargetForGoal",
+      "namespace" : "com.jemstep.model.goal",
+      "doc" : "",
+      "fields" : [ {
+        "name" : "goal",
+        "type" : "GoalEvent"
+      }, {
+        "name" : "targetDate",
+        "type" : "string"
+      }, {
+        "name" : "targetValue",
+        "type" : "long"
+      }, {
+        "name" : "targetModel",
+        "type" : {
+          "type" : "record",
+          "name" : "TargetModel",
+          "namespace" : "com.jemstep.model.portfolio",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "id",
+            "type" : "string"
+          }, {
+            "name" : "name",
+            "type" : "string"
+          }, {
+            "name" : "riskCategory",
+            "type" : "string"
+          }, {
+            "name" : "riskScoreTopRange",
+            "type" : "double"
+          }, {
+            "name" : "allocations",
+            "type" : {
+              "type" : "array",
+              "items" : {
+                "type" : "record",
+                "name" : "TargetModelProduct",
+                "namespace" : "com.jemstep.model.goal",
+                "doc" : "",
+                "fields" : [ {
+                  "name" : "ticker",
+                  "type" : "string"
+                }, {
+                  "name" : "name",
+                  "type" : "string"
+                }, {
+                  "name" : "productId",
+                  "type" : [ "null", "int" ]
+                }, {
+                  "name" : "proxyProductId",
+                  "type" : "int"
+                }, {
+                  "name" : "allocation",
+                  "type" : {
+                    "type" : "record",
+                    "name" : "Percentage",
+                    "doc" : "",
+                    "fields" : [ {
+                      "name" : "value",
+                      "type" : "double"
+                    } ]
+                  }
+                }, {
+                  "name" : "expenseRatio",
+                  "type" : "Percentage"
+                }, {
+                  "name" : "t2AssetAllocation",
+                  "type" : {
+                    "type" : "map",
+                    "values" : "Percentage"
+                  }
+                } ]
+              }
+            }
+          }, {
+            "name" : "integrations",
+            "type" : {
+              "type" : "record",
+              "name" : "TargetModelIntegrations",
+              "namespace" : "com.jemstep.model.assetliability",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "pershingIntegration",
+                "type" : [ "null", {
+                  "type" : "record",
+                  "name" : "TargetModelPershingIntegration",
+                  "doc" : "",
+                  "fields" : [ {
+                    "name" : "customFields",
+                    "type" : "string"
+                  } ]
+                } ]
+              } ]
+            }
+          }, {
+            "name" : "investmentMinimum",
+            "type" : [ "null", "double" ]
+          }, {
+            "name" : "capitalMarketAssumptions",
+            "type" : [ "null", {
+              "type" : "record",
+              "name" : "CapitalMarketAssumptions",
+              "doc" : "",
+              "fields" : [ {
+                "name" : "cmaReturn",
+                "type" : "double"
+              }, {
+                "name" : "cmaRisk",
+                "type" : "double"
+              } ]
+            } ]
+          } ]
+        }
+      }, {
+        "name" : "riskScore",
+        "type" : {
+          "type" : "record",
+          "name" : "Score",
+          "namespace" : "com.jemstep.commons.util",
+          "doc" : "",
+          "fields" : [ {
+            "name" : "score",
+            "type" : "double"
+          } ]
+        }
+      } ]
+    }
+  } ]
+}
