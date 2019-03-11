@@ -2,7 +2,7 @@
 
 An example project that builds analytics with Kafka messages
 ###### 1. Druid(Steps to be done using Console 1)
-Currently Druid has poor support of Docker images with the latest version. I have build tar from the Druid source code. Modified few settings to make it easy to run Druid on the local RAM and few change in runtime configs.
+Currently Druid has poor support of Docker images with the latest version. I have build tar from the Druid source code. Modified few settings to make it easier to run Druid on the local RAM and few change in runtime configs.
 
 Download from: https://drive.google.com/open?id=1nvkvs5l6ernV6MLcTSSGHJnDN3fIv7ZX 
 1. Unzip apache-druid
@@ -79,8 +79,33 @@ docker run -d \
 ![](screenshots/15.png)
 ![](screenshots/18.png)
 
+###### 8. Running SuperSet(open console 4)
 
+git clone https://github.com/apache/incubator-superset/
+cd incubator-superset/contrib/docker
+# prefix with SUPERSET_LOAD_EXAMPLES=yes to load examples:
+docker-compose run --rm superset ./docker-init.sh
+# you can run this command everytime you need to start superset now:
+docker-compose up
 
+Steps already mentioned here: https://superset.incubator.apache.org/installation.html#start-with-docker
+
+Once all of them are up you see below screenshots on console 4:
+![](screenshots/16.png)
+![](screenshots/19.png)
+
+######: 9. Once superset starts running on http://localhost:8088, kindly follow
+1. Step_by_step_Guide_To_configure_Superset.pdf document to connect to local druid broker for issuing quaries and creating charts with the data stored in Druid.
+
+######: 10. More links useful during learning:
+1. http://druid.io/docs/latest/design/index.html
+2. http://druid.io/docs/latest/ingestion/flatten-json.html
+3. http://jsonpath.herokuapp.com/
+4. http://druid.io/docs/latest/ingestion/ingestion-spec.html
+5. http://druid.io/docs/latest/querying/filters.html#javascript-filter
+6. http://druid.io/docs/latest/querying/aggregations.html#javascript-aggregator
+7. http://druid.io/docs/latest/design/segments.html
+8. http://druid.io/docs/latest/ingestion/index.html
 
 
 
