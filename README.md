@@ -2,7 +2,7 @@
 
 An example project that builds analytics with Kafka messages
 ###### 1. Druid(Steps to be done using Console 1)
-Currently Druid has poor support of Docker images with the latest version. I have build tar from the Druid source code. Modified few settings to make it easier to run Druid on the local RAM and few change in runtime configs.
+Currently Druid with latest version has poor Docker support. I have build tar from the Druid source code. Modified few settings to make it easier to run on the local Machines and done few change to runtime configs.
 
 Download from: https://drive.google.com/open?id=1nvkvs5l6ernV6MLcTSSGHJnDN3fIv7ZX 
 1. Unzip apache-druid
