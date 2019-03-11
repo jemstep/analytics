@@ -94,14 +94,5 @@ scalacOptions ++= Seq(
 scalacOptions in Test ++= Seq("-Yrangepos")
 
 // http://www.wartremover.org/doc/warts.html
-wartremoverErrors in (Compile, compile) ++= Warts.unsafe
-wartremoverErrors in (Compile, compile) ++= Seq(
-  Wart.Equals,
-  Wart.JavaConversions,
-  Wart.MutableDataStructures,
-  Wart.Option2Iterable,
-  Wart.Return,
-  Wart.StringPlusAny,
-  Wart.While,
-  Wart.Var)
+wartremoverWarnings in (Compile, compile) ++= Warts.unsafe
 

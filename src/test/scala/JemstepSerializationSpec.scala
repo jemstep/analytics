@@ -20,9 +20,9 @@ object JemstepSerializationSpecFixture {
   }
 
   val backTestMetrics = JemstepAvroSchemaFile("backtest_metrics")
-  val goal = JemstepAvroSchemaFile("goal")
+  val goal = JemstepAvroSchemaFile("goal_envelope")
   val portfolioForGoal = JemstepAvroSchemaFile("portfolio_for_goal")
-  val modelQuestionnaire = JemstepAvroSchemaFile("model_questionnaire")
+  val modelQuestionnaire = JemstepAvroSchemaFile("questionnaire_event")
   val portfolioByBroker= JemstepAvroSchemaFile("portfolio_by_broker")
   val userIdentified = JemstepAvroSchemaFile("user_identified")
   val accountHolderDetails = JemstepAvroSchemaFile("account_holder_details")
@@ -39,9 +39,8 @@ class JemstepSerializationSpec extends Specification  {
 
     "get correct names for the schemas" in {
       SchemaIO.findSchema("com.jemstep.model.assetliability.BacktestMetrics") must_== Some(JemstepSerializationSpecFixture.backTestMetrics.schema)
-      SchemaIO.findSchema("com.jemstep.model.goal.Goal") must_== Some(JemstepSerializationSpecFixture.goal.schema)
-      SchemaIO.findSchema("com.jemstep.model.goal.PortfolioForGoal") must_== Some(JemstepSerializationSpecFixture.portfolioForGoal.schema)
-      SchemaIO.findSchema("com.jemstep.model.questionnaire.ModelQuestionnaire") must_== Some(JemstepSerializationSpecFixture.modelQuestionnaire.schema)
+      SchemaIO.findSchema("com.jemstep.generator.GoalEnvelope") must_== Some(JemstepSerializationSpecFixture.goal.schema)
+      SchemaIO.findSchema("com.jemstep.model.questionnaire.QuestionnaireEvent") must_== Some(JemstepSerializationSpecFixture.modelQuestionnaire.schema)
       SchemaIO.findSchema("com.jemstep.model.events.shared.UserIdentified") must_== Some(JemstepSerializationSpecFixture.userIdentified.schema)
       SchemaIO.findSchema("com.jemstep.model.enrollment.AccountHolderDetails") must_== Some(JemstepSerializationSpecFixture.accountHolderDetails.schema)
     }
