@@ -70,9 +70,10 @@ docker run -d \
 
 ![](screenshots/5.png)
 
-###### 7. Go to console 1 and 
+###### 7. Go to console 3 and 
 
-1. run `./supervisor.sh` which registers kafka-indexing service with the coordinator.
+1. do `cd druid/kafka-indexing-job-runner`
+2. run `./supervisor.sh` which registers kafka-indexing service with the coordinator.
 ![](screenshots/6.png)
 
 ###### 8. Go to console 3 and 
