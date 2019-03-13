@@ -44,11 +44,24 @@ docker run -d \
     -e KAFKA_JMX_PORT=9999 \
     confluentinc/cp-kafka:4.1.0
 ```  
+###### 5. Schema-Registry:
+```
+docker run -d \
+  --net=jemstep \
+  --name=schemaregistry \
+  -p 8024:8024 \
+  -e SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2190 \
+  -e SCHEMA_REGISTRY_HOST_NAME=schema-registry \
+  -e SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8024 \
+  -e SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS='GET,POST,PUT,OPTIONS' \
+  -e SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_ORIGIN='*' \
+  confluentinc/cp-schema-registry:4.1.0
+```
 ![](screenshots/4.png)
 
 
 
-###### 5. Run App(steps to be done using console 3)
+###### 6. Run App(steps to be done using console 3)
 
 1. `git clone https://github.com/jemstep/analytics.git`
 2. `cd analytics`
@@ -57,17 +70,17 @@ docker run -d \
 
 ![](screenshots/5.png)
 
-###### 6. Go to console 1 and 
+###### 7. Go to console 1 and 
 
 1. run `./supervisor.sh` which registers kafka-indexing service with the coordinator.
 ![](screenshots/6.png)
 
-###### 7. Go to console 3 and 
+###### 8. Go to console 3 and 
 
 1. run `sbt "runMain com.jemstep.producer.PlainSinkProducerMain"` to genarate more messages
 2. run `sbt "runMain com.jemstep.producer.PlainSinkProducerMain"` to genarate more messages
 
-###### 7. Below things can be seen in Druid console and Druid Indexing.
+###### 9. Below things can be seen in Druid console and Druid Indexing.
 
 ![](screenshots/8.png)
 ![](screenshots/9.png)
@@ -79,7 +92,7 @@ docker run -d \
 ![](screenshots/15.png)
 ![](screenshots/18.png)
 
-###### 8. Running SuperSet(open console 4)
+###### 10. Running SuperSet(open console 4)
 ```
 git clone https://github.com/apache/incubator-superset/
 cd incubator-superset/contrib/docker
@@ -95,10 +108,10 @@ Once all of them are up you see below screenshots on console 4:
 ![](screenshots/16.png)
 ![](screenshots/19.png)
 
-######: 9. Once superset starts running on http://localhost:8088, kindly follow
+######: 11. Once superset starts running on http://localhost:8088, kindly follow
 1. + https://github.com/jemstep/analytics/Step_by_step_Guide_To_configure_Superset.pdf document to connect to local druid broker for issuing quaries and creating charts with the data stored in Druid.
 
-######: 10. More links useful during learning:
+######: 12. More links useful during learning:
 1. http://druid.io/docs/latest/design/index.html
 2. http://druid.io/docs/latest/ingestion/flatten-json.html
 3. http://jsonpath.herokuapp.com/

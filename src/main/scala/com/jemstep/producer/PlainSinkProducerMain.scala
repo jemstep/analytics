@@ -88,7 +88,7 @@ object PlainSinkProducerMain extends App {
     val key = recordWithRecordKeySchema
     key.put("userId", userId)
 
-    val pRecord = new ProducerRecord[AnyRef, AnyRef]("investor3", key, record)
+    val pRecord = new ProducerRecord[AnyRef, AnyRef]("investor", key, record)
     discard(pRecord.headers().add("userId", userId.getBytes))
     discard(pRecord.headers().add("organizationId", organizationId.getBytes))
     discard(pRecord.headers().add("schema", fullName.getBytes))
