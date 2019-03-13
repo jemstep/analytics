@@ -6,7 +6,7 @@ object Config {
   val kafka_port = System.getProperty("kafka.port", "29092").toInt
   val kafka_server = s"$kafka_host:$kafka_port"
 
-  val schema_registry_port = System.getProperty("schema.port", "8082").toInt
+  val schema_registry_port = System.getProperty("schema.port", "8024").toInt
   val schema_registry_host = System.getProperty("schema.host", "localhost")
   val schema_registry_url = s"http://$schema_registry_host:$schema_registry_port"
 

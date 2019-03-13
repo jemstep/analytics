@@ -1,6 +1,6 @@
 package com.jemstep.producer
 
-import java.io.{File}
+import java.io.File
 
 import akka.actor.ActorSystem
 import akka.kafka.ProducerSettings
@@ -10,17 +10,15 @@ import akka.stream.scaladsl.Source
 import com.jemstep.commons.Config._
 import com.jemstep.commons.DataIO
 import com.jemstep.commons.Util._
+import com.jemstep.schema_registry.SchemaRegistry._
 import com.sksamuel.avro4s.AvroSchema
 import org.apache.avro.generic.{GenericArray, GenericData, GenericRecord}
 import org.apache.avro.util.Utf8
 import org.apache.kafka.clients.producer.ProducerRecord
-import org.apache.kafka.common.serialization.{ByteArraySerializer}
 
 import scala.collection.JavaConverters._
 import scala.concurrent.Await
 import scala.concurrent.duration._
-
-import com.jemstep.commons.MessageEncoder._
 
 object PlainSinkProducerMain extends App {
 
@@ -29,10 +27,12 @@ object PlainSinkProducerMain extends App {
 
   @SuppressWarnings(Array("org.wartremover.warts.Null"))
   implicit val recordWithRecordKeySchema = new GenericData.Record(AvroSchema[RecordKey])
-  case class RecordKey(userId:Utf8)
+  case class RecordKey(userId: Utf8)
 
-  val producerSettings: ProducerSettings[Array[Byte], Array[Byte]] =
-    ProducerSettings(materializer.system, new ByteArraySerializer , new ByteArraySerializer)
+  val producerSettings: ProducerSettings[AnyRef, AnyRef] =
+    ProducerSettings(materializer.system,
+      new io.confluent.kafka.serializers.KafkaAvroSerializer(client, props),
+      new io.confluent.kafka.serializers.KafkaAvroSerializer(client, props))
       .withBootstrapServers(kafka_server)
 
   println(s"${getClass.getSimpleName} sending messages to $kafka_server")
@@ -83,25 +83,19 @@ object PlainSinkProducerMain extends App {
     }
     .zipWithIndex.map { case ((userId, organizationId, record), count) =>
     val fullName = record.getSchema.getFullName.trim
-    println(s"\n Produced User: $userId, Org: $organizationId, Schema: $fullName\nrecord\n")
+    println(s"\n Produced User: $userId, Org: $organizationId, Schema: $fullName\nrecord$count:\n$record\n")
 
     val key = recordWithRecordKeySchema
     key.put("userId", userId)
 
-    val keyRecordByteArray: Option[Array[Byte]] = datumToByteArray(key.getSchema,key)
-    val valueRecordByteArray: Option[Array[Byte]] = datumToByteArray(record.getSchema, record)
-
-    (keyRecordByteArray, valueRecordByteArray) match {
-      case (Some(key), Some(value)) ⇒ {
-        val pRecord = new ProducerRecord[Array[Byte], Array[Byte]]("investor", key, value)
-        discard(pRecord.headers().add("userId", userId.getBytes))
-        discard(pRecord.headers().add("organizationId", organizationId.getBytes))
-        discard(pRecord.headers().add("schema", fullName.getBytes))
-        discard(pRecord.headers().add("operation", "UPSERT".getBytes))
-        pRecord
-      }
-    }
-  }.runWith(Producer.plainSink(producerSettings))
+    val pRecord = new ProducerRecord[AnyRef, AnyRef]("investor3", key, record)
+    discard(pRecord.headers().add("userId", userId.getBytes))
+    discard(pRecord.headers().add("organizationId", organizationId.getBytes))
+    discard(pRecord.headers().add("schema", fullName.getBytes))
+    discard(pRecord.headers().add("operation", "UPSERT".getBytes))
+    pRecord
+  }
+    .runWith(Producer.plainSink(producerSettings))
 
   println("Waiting for producer... ")
   discard(Await.result(done, 50.seconds))
@@ -114,4 +108,3 @@ object PlainSinkProducerMain extends App {
   println("Shutting down JVM")
   System.exit(0)
 }
-
